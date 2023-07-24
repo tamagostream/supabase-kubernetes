@@ -14,6 +14,7 @@ db:
     enabled: true
   storage:
       mountPath: /var/lib/postgresql/data
+      subPath: postgres
       size: 20Gi
       storageClass: azurefile
       annotations:
