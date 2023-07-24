@@ -13,8 +13,8 @@ db:
   persistence: 
     enabled: true
   storage:
-      mountPath: /var/lib/postgresql/data
-      subPath: postgres
+      mountPath: /var/lib/postgresql
+      subPath: data
       size: 20Gi
       storageClass: managed-csi
       annotations:
