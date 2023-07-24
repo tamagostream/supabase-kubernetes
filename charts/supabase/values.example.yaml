@@ -52,7 +52,7 @@ auth:
   image:
     repo: v2.40.1
   environment:
-    DB_HOST: supabase-db
+    DB_HOST: supabase-supabase-db.supabase.svc.cluster.local
     DB_PORT: "5432"
     DB_DRIVER: postgres
     DB_NAME: postgres
@@ -84,7 +84,7 @@ rest:
     repository: postgrest/postgrest
     tag: v9.0.1.20220717
   environment:
-    DB_HOST: supabase-db
+    DB_HOST: supabase-supabase-db.supabase.svc.cluster.local
     DB_PORT: "5432"
     DB_DRIVER: postgres
     DB_NAME: postgres
@@ -98,7 +98,7 @@ realtime:
     repository: supabase/realtime
     tag: v2.1.0
   environment:
-    DB_HOST: supabase-db
+    DB_HOST: supabase-supabase-db.supabase.svc.cluster.local
     DB_PORT: "5432"
     DB_NAME: postgres
     DB_SSL: "false"
@@ -118,7 +118,7 @@ realtime:
     DNS_NODES: "''"
 meta:
   environment:
-    DB_HOST: supabase-db
+    DB_HOST: supabase-supabase-db.supabase.svc.cluster.local
     DB_PORT: "5432"
     DB_DRIVER: postgres
     DB_NAME: postgres
@@ -130,7 +130,7 @@ storage:
     repository: supabase/storage-api
     tag: v0.26.1
   environment:
-    DB_HOST: supabase-db
+    DB_HOST: supabase-supabase-db.supabase.svc.cluster.local
     DB_PORT: "5432"
     DB_DRIVER: postgres
     DB_NAME: postgres
