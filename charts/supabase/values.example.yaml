@@ -26,7 +26,7 @@ studio:
     tag: 20230127-6bfd87b
   environment:
     SUPABASE_URL: https://supabase.k8s.postaid.social
-    SUPABASE_REST_URL: https://supabase.k8s.postaid.social/rest/v1/
+    SUPABASE_REST_URL: https://api.supabase.k8s.postaid.social/rest/v1/
     STUDIO_PG_META_URL: https://api.supabase.k8s.postaid.social/pg
     SUPABASE_PUBLIC_URL: https://supabase.k8s.postaid.social/
   ingress:
@@ -39,14 +39,6 @@ studio:
       - secretName: supabase.k8s.postaid.social
         hosts:
           - supabase.k8s.postaid.social
-    hosts:
-      - host: supabase.k8s.postaid.social
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              serviceName: api
-              servicePort: 3000
 
 auth:
   image:
@@ -82,24 +74,6 @@ auth:
 rest:
   fullname: supabase-rest
   enabled: true
-  ingress:
-    enabled: true 
-    className: ""
-    annotations:
-      kubernetes.io/ingress.class: azure/application-gateway
-      cert-manager.io/cluster-issuer: letsencrypt
-    tls:
-      - secretName: supabase.k8s.postaid.social
-        hosts:
-          - supabase.k8s.postaid.social
-    hosts:
-      - host: supabase.k8s.postaid.social
-        paths:
-          - path: /rest
-            pathType: Prefix
-            backend:
-              serviceName: supabase-rest
-              servicePort: 80
   image:
     repository: postgrest/postgrest
     tag: v9.0.1.20220717
@@ -193,11 +167,3 @@ kong:
       - secretName: api.supabase.k8s.postaid.social
         hosts:
           - api.supabase.k8s.postaid.social
-    hosts:
-      - host: api.supabase.k8s.postaid.social
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              serviceName: api
-              servicePort: 80
