@@ -80,6 +80,7 @@ auth:
     GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: "https://supabase.k8s.postaid.social:32534/auth/v1/verify"
 
 rest:
+  fullname: supabase-rest
   enabled: true
   ingress:
     enabled: true 
@@ -97,7 +98,7 @@ rest:
           - path: /rest
             pathType: Prefix
             backend:
-              serviceName: api
+              serviceName: supabase-rest
               servicePort: 3000
   image:
     repository: postgrest/postgrest
