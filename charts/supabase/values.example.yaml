@@ -39,6 +39,14 @@ studio:
       - secretName: supabase.k8s.postaid.social
         hosts:
           - supabase.k8s.postaid.social
+    hosts:
+      - host: supabase.k8s.postaid.social
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: api
+              servicePort: 3000
 
 auth:
   image:
@@ -167,3 +175,11 @@ kong:
       - secretName: api.supabase.k8s.postaid.social
         hosts:
           - api.supabase.k8s.postaid.social
+    hosts:
+      - host: api.supabase.k8s.postaid.social
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: api
+              servicePort: 8000
