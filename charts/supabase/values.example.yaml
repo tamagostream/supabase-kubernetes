@@ -94,7 +94,7 @@ rest:
     hosts:
       - host: supabase.k8s.postaid.social
         paths:
-          - path: /pg
+          - path: /rest
             pathType: Prefix
             backend:
               serviceName: api
