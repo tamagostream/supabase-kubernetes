@@ -16,7 +16,7 @@ db:
       mountPath: /var/lib/postgresql/data
       subPath: postgres
       size: 20Gi
-      storageClass: azurefile
+      storageClass: managed-csi
       annotations:
         helm.sh/resource-policy: "keep"
 
