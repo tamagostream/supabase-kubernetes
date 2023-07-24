@@ -59,7 +59,7 @@ auth:
     DB_SSL: allow
     GOTRUE_API_HOST: "0.0.0.0"
     GOTRUE_API_PORT: "9999"
-    GOTRUE_SITE_URL: http://studio.localhost
+    GOTRUE_SITE_URL: https://supabase.k8s.postaid.social/
     GOTRUE_URI_ALLOW_LIST: "*"
     GOTRUE_DISABLE_SIGNUP: "false"
     GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
@@ -80,6 +80,25 @@ auth:
     GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: "https://supabase.k8s.postaid.social:32534/auth/v1/verify"
 
 rest:
+  enabled: true
+  ingress:
+    enabled: true 
+    className: ""
+    annotations:
+      kubernetes.io/ingress.class: azure/application-gateway
+      cert-manager.io/cluster-issuer: letsencrypt
+    tls:
+      - secretName: supabase.k8s.postaid.social
+        hosts:
+          - supabase.k8s.postaid.social
+    hosts:
+      - host: supabase.k8s.postaid.social
+        paths:
+          - path: /pg
+            pathType: Prefix
+            backend:
+              serviceName: api
+              servicePort: 3000
   image:
     repository: postgrest/postgrest
     tag: v9.0.1.20220717
