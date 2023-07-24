@@ -15,7 +15,7 @@ db:
   storage:
       mountPath: /var/lib/postgresql/data
       size: 20Gi
-      storageClass: managed-csi
+      storageClass: azurefile
       annotations:
         helm.sh/resource-policy: "keep"
 
@@ -30,7 +30,7 @@ studio:
     SUPABASE_PUBLIC_URL: https://supabase.k8s.postaid.social/
   ingress:
     enabled: true
-    className: "nginx"
+    className: ""
     annotations:
       kubernetes.io/ingress.class: azure/application-gateway
       cert-manager.io/cluster-issuer: letsencrypt
@@ -147,7 +147,7 @@ storage:
     accessModes:
       - ReadWriteOnce
     size: 4Gi
-    storageClassName: managed-csi
+    storageClassName: azurefile
     annotations:
       helm.sh/resource-policy: "keep"
 
@@ -164,7 +164,7 @@ kong:
 
   ingress:
     enabled: true
-    className: "nginx"
+    className: ""
     annotations:
       kubernetes.io/ingress.class: azure/application-gateway
       cert-manager.io/cluster-issuer: letsencrypt
