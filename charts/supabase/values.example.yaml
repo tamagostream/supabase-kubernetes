@@ -27,7 +27,7 @@ studio:
   environment:
     SUPABASE_URL: https://supabase.k8s.postaid.social
     SUPABASE_REST_URL: https://supabase.k8s.postaid.social/rest/v1/
-    STUDIO_PG_META_URL: http://supabase-kong.supabase.svc.cluster.local:8000/pg
+    STUDIO_PG_META_URL: https://api.supabase.k8s.postaid.social/pg
     SUPABASE_PUBLIC_URL: https://supabase.k8s.postaid.social/
   ingress:
     enabled: true
